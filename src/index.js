@@ -4,8 +4,8 @@
  */
 (function() {
     var lazyload = function(obj) {
-        if (obj instanceof lazyload) return obj
-        if (!(this instanceof lazyload)) return new lazyload(obj)
+        if (obj instanceof lazyload) return obj;
+        if (!(this instanceof lazyload)) return new lazyload(obj);
         this.lazyloadWrapped = obj;
     }
     if (typeof exports !== 'undefined') {
@@ -43,19 +43,19 @@
      * @param {DOMElement} DOM
      */
     lazyload.loadItem = function(DOM) {
-        var url = DOM.getAttribute(lazyload.options.attribute)
-        var status = DOM.getAttribute('data-status')
+        var url = DOM.getAttribute(lazyload.options.attribute);
+        var status = DOM.getAttribute('data-status');
         if (url && status !== 'load') {
-            DOM.setAttribute('data-status', 'load')
+            DOM.setAttribute('data-status', 'load');
             DOM.onload = function() {
-                DOM.setAttribute(lazyload.options.attribute, '')
-                DOM.className = DOM.className.replace(lazyload.options.className, '')
+                DOM.setAttribute(lazyload.options.attribute, '');
+                DOM.className = DOM.className.replace(lazyload.options.className, '');
             }
             DOM.onerror = function() {
-                DOM.setAttribute(lazyload.options.attribute, '')
-                DOM.className = DOM.className.replace(lazyload.options.className, '')
+                DOM.setAttribute(lazyload.options.attribute, '');
+                DOM.className = DOM.className.replace(lazyload.options.className, '');
             }
-            DOM.src = url
+            DOM.src = url;
         }
     }
     /**
@@ -65,7 +65,7 @@
         var images = lazyload.options.className ? document.getElementsByClassName(lazyload.options.className) : document.getElementsByTagName('img');
         for (var i = 0; i < images.length; i++) {
             if (images[i].getBoundingClientRect().top <= window.innerHeight) {
-                lazyload.loadItem(images[i])
+                lazyload.loadItem(images[i]);
             }
         }
     }
@@ -79,15 +79,15 @@
             attribute: options.attribute || ''
         };
         if (lazyload.options.attribute) {
-            lazyload.run()
-            lazyload.listener = lazyload.throttle(lazyload.run, 100, 500)
-            window.addEventListener('scroll', lazyload.listener, false)
+            lazyload.run();
+            lazyload.listener = lazyload.throttle(lazyload.run, 100, 500);
+            window.addEventListener('scroll', lazyload.listener, false);
         }
     }
     /**
      * @method remove scroll event listener
      */
     lazyload.remove = function() {
-        lazyload.listener && window.removeEventListener('scroll', lazyload.listener, false)
+        lazyload.listener && window.removeEventListener('scroll', lazyload.listener, false);
     }
 }.call(this))
