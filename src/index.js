@@ -19,28 +19,28 @@
     lazyload.listener = null;//scroll event listener
     /**
      * @method Limit the execution frequency of the target function
-     * @param {Function} func => target function
-     * @param {Number} delay => delay time
-     * @param {Number} limitTime => limit time, execute only once during this time
+     * @param {Function} func => target function.(required)
+     * @param {Number} delay => delay time.(required)
+     * @param {Number} limitTime => limit time, execute only once during this time.(required)
      */
     lazyload.throttle = function(func, delay, limitTime) {
-        var id, startTime = new Date();
+        var timer, startTime = new Date();
         return function() {
             var context = this,
                 args = arguments,
                 curTime = new Date();
-            if (id) clearTimeout(id);
+            clearTimeout(timer);
             if (curTime - startTime >= limitTime) {
-                func.apply(context,args);
+                func.apply(context, args);
                 startTime = curTime;
             } else {
-                id = setTimeout(func, delay);
+                timer = setTimeout(func, delay);
             }
         };
     }
     /**
      * @method load img tag item
-     * @param {DOMElement} DOM
+     * @param {DOMElement} DOM => DOM element.(required)
      */
     lazyload.loadItem = function(DOM) {
         var url = DOM.getAttribute(lazyload.options.attribute);
@@ -71,7 +71,7 @@
     }
     /**
      * @method Initialize lazyload extension
-     * @param {Object} options => lazyload configs
+     * @param {Object} options => lazyload configs.(required)
      */
     lazyload.init = function(options) {
         lazyload.options = {
@@ -80,7 +80,7 @@
         };
         if (lazyload.options.attribute) {
             lazyload.run();
-            lazyload.listener = lazyload.throttle(lazyload.run, 100, 500);
+            lazyload.listener = lazyload.throttle(lazyload.run, 150, 500);
             window.addEventListener('scroll', lazyload.listener, false);
         }
     }
