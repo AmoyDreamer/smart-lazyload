@@ -1,22 +1,22 @@
-# img-lazyload
+# smart-lazyload
 An extension that supports lazy loading of image.
 
 ## Install
 ### Using unpkg CDN
 ```
-<script src="https://unpkg.com/img-lazyload/index.js"></script>
+<script src="https://unpkg.com/smart-lazyload/index.js"></script>
 ```
 
 ### Using npm
 ```bash
-npm install img-lazyload --save-dev
+npm install smart-lazyload --save-dev
 ```
 
 ## Usage
 
 ### CommonJS usage
 ```
-const lazyload = require('img-lazyload')
+const lazyload = require('smart-lazyload')
 ```
 
 ### Call
@@ -42,4 +42,4 @@ lazyload.init(options)
 - attribute => {String} The attribute of data url within image tag.(required)
 
 ## License
-img-lazyload is [MIT licensed](https://github.com/AmoyDreamer/img-lazyload/blob/master/LICENSE).
+smart-lazyload is [MIT licensed](https://github.com/AmoyDreamer/smart-lazyload/blob/master/LICENSE).
