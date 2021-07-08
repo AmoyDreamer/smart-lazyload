@@ -14,7 +14,10 @@
   },
   "keywords": [
     "lazyload",
-    "image"
+    "image",
+    "lazy",
+    "load",
+    "lazy image"
   ],
   "author": "Allen Liu",
   "license": "MIT",
